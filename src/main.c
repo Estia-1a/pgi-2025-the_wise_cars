@@ -17,6 +17,7 @@ int main(int argc, char **argv) {
    */
 
   /*DO NOT EDIT THIS PART*/
+  /* Loris test */
   Config configuration ;
   parse_arguments( argc, argv, &configuration ) ;
   check_debug_mode(configuration);
