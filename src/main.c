@@ -17,6 +17,7 @@ int main(int argc, char **argv) {
    */
 
   /*DO NOT EDIT THIS PART*/
+  /* Loris test */
   /*Nathan DEbeaupuis test*/
   Config configuration ;
   parse_arguments( argc, argv, &configuration ) ;
