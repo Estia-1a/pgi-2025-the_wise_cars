@@ -12,9 +12,7 @@
  */
 
 void helloWorld() {
-    printf("Hello World !");
+    printf("Hello World ");
+    
 }
 
-void dimension (char *source_path){
-    
-    }
