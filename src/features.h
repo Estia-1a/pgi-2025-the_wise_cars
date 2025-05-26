@@ -3,5 +3,5 @@
 
 
 void helloWorld();
-
+void first_pixel();
 #endif
