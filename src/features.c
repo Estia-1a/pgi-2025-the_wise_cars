@@ -15,12 +15,20 @@ void helloWorld() {
     printf("Hello World ");
     
 }
+/*
+int read_image_data(const char *source_path, unsigned char **data, int *width, int *height, int *channel_count);
+*/
+const char *source_path = "images/input/image.jpeg"; 
 void dimension (char *source_path){
     
     int width=0;
     int height=0;
+    printf("Appel de l'image : %s\n", source_path);
+
     int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *channel_count);
-    printf("dimension : %d, %d\n",width, height);
+
+
+    printf("la dimension est : %d, %d\n",width, height);
     
 }
 
