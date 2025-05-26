@@ -10,12 +10,41 @@
  * Your commit messages must contain "#n" with: n = number of the corresponding feature issue.
  * When the feature is totally implemented, your commit message must contain "close #n".
  */
+int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *nbChannels){
+
+}
+int write_image_data(const char *filename, unsigned char *data, int width, int height){
+    
+}
 
 void helloWorld() {
     printf("Hello World !");
 }
+
+typedef struct _pixelRGB {
+  unsigned char R ;
+  unsigned char G ;
+  unsigned char B ;
+} pixelRGB ;
+
+void dimension (char *source_path){
+    
+    int width=0;
+    int height=0;
+    int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *channel_count);
+    printf("dimension : %d, %d\n",width, height);
+    
+}
+
+typedef struct _pixelRGB {
+  unsigned char R ;
+  unsigned char G ;
+  unsigned char B ;
+} pixelRGB ;
+
 void first_pixel (){
-    printf("test fonction appel");
+   
+    pixelRGB* pixel1 = getPixel(0, 0);
 
 
 }
