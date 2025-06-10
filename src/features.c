@@ -155,7 +155,8 @@ void stat_report(char*filename) /* Loris*/ {
   size=width*height*channels;
   int max_pixel=0;
   int min_pixel =255;
-  int max_r=0, max_g=255, min_b=255;
+  int max_r=0, max_g=0, max_b=0;
+  int min_r=255, min_g=255, min_b=255;
 
   for(i=0; i< size; i+=channels){
     int r= data[i];
@@ -209,7 +210,7 @@ void color_red(char*filename) /*Loris*/ {
 
   int size = width* height * channels;
 
-  for(int i=0; i< size, i+= channels) {
+  for(int i=0; i< size; i+= channels) {
     data[i+1]=0;
     data[i+2]=0;
 
@@ -230,7 +231,7 @@ void color_blue(char*source_path)/*Loris*/ {
 
 void color_grey(char*source_path) {
   int i;
-  for (i=0,i<width*height,i++) {
+  for (i=0;i<width*height;i++) {
     unsigned char R = data[3*i];
     unsigned char G = data[3*i+1];
     unsigned char B = data[3*i+2];

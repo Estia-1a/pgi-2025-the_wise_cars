@@ -9,4 +9,5 @@ void second_line();
 void print_pixel();
 void tenth_pixel(char *source_path);
 void stat_report();
+void color_red();
 #endif
