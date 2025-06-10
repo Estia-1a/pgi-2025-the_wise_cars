@@ -16,6 +16,22 @@ int read_image_data(const char *filename, unsigned char **data, int *width, int 
 int write_image_data(const char *filename, unsigned char *data, int width, int height){
     
 }
+/*
+int read_image_data(const char *source_path, unsigned char **data, int *width, int *height, int *channel_count);
+*/
+const char *source_path = "images/input/image.jpeg"; 
+void dimension (char *source_path){
+    
+    int width=0;
+    int height=0;
+    printf("Appel de l'image : %s\n", source_path);
+
+    int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *channel_count);
+
+
+    printf("la dimension est : %d, %d\n",width, height);
+    
+}
 
 void helloWorld() {
     printf("Hello World !");
@@ -44,7 +60,7 @@ typedef struct _pixelRGB {
 
 void first_pixel (){
    
-    pixelRGB* pixel1 = getPixel(0, 0);
+   
 
 
 }
