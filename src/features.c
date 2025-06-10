@@ -87,5 +87,16 @@ void tenth_pixel(char *source_path){
     printf(R,G,B);
 }
 void second_line() {
-  
+  unsigned char *data = NULL;
+  int width = 0;
+  int height = 0;
+  int nbChannels = 0;
+
+  read_image_data(source_path, &data, &width, &height, &nbChannels);
+
+  int R = data[width * 3];
+  int G = data[width * 3 + 1];
+  int B = data[width * 3 + 2];
+
+  printf("second_line: %d, %d, %d\n", R, G, B);
 }
