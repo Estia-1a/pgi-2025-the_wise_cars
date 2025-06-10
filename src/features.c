@@ -53,7 +53,7 @@ void first_pixel (char*source_path){
 void print_pixel(char*filename,int x, int y) {
  unsigned char*data;
  int width,height, nbChannels;
- if(read_image_data(source_path,&data,&width,&height,&nbChannels)!=0) {
+ if(read_image_data(filename,&data,&width,&height,&nbChannels)!=0) {
   return;
  }
 pixelRGB*p= get_pixel(data,width,height,nbChannels,x,y);
@@ -62,7 +62,7 @@ if(p !=NULL){
   printf("print_pixel (%d,%d):%d,%d,%d\n",x,y,p-> R,p-> G,p-> B);
 
 }
-free(data);
+free_image_data(data);
 }
 void test(){
     printf("test test");
