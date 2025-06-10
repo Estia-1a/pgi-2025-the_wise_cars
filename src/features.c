@@ -280,9 +280,16 @@ void color_blue(char*filename)/*Loris*/ {
 }
 
 void color_grey(char*source_path) {
+  
+}
+void invert(char*source_path) {
+
+}
+
+void color_gray_luminance(char*source_path) {
   unsigned char *data = NULL;
   int i;
-  int width,height,nbChannels;
+  int width,height;
   int size =width*height;
   unsigned char R,G,B;
   for (i=0;i<size;i++){
@@ -295,13 +302,6 @@ void color_grey(char*source_path) {
   R = 0.21 * getPixel(width, height);
   G = 0.72 * getPixel(width, height);
   B = 0.07 * getPixel(width, height);
-}
-void invert(char*source_path) {
-
-}
-
-void color_gray_luminance(char*source_path) {
-
 }
 
 void color_desaturate(char*source_path) {
