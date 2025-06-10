@@ -230,6 +230,7 @@ void color_blue(char*source_path)/*Loris*/ {
 }
 
 void color_grey(char*source_path) {
+  unsigned char *data = NULL;
   int i;
   for (i=0;i<width*height;i++) {
     unsigned char R = data[3*i];
