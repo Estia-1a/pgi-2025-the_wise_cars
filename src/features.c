@@ -291,10 +291,10 @@ void color_grey(char*source_path) {
     B = data[3*i+2];
   }
   int write_image_data(const char *filename, unsigned char *data, int width, int height);
-  
-  R = 0.21 * getPixel(x, y);
-  G = 0.72 * getPixel(x, y);
-  B = 0.07 * getPixel(x, y);
+
+  R = 0.21 * getPixel(width, height);
+  G = 0.72 * getPixel(width, height);
+  B = 0.07 * getPixel(width, height);
 }
 void invert(char*source_path) {
 
