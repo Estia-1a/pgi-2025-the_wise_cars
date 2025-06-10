@@ -71,18 +71,3 @@ if(p !=NULL){
 }
 free(data);
 }
-void test(){
-    printf("test test");
-}
-
-void tenth_pixel(char *source_path){
-    unsigned char*data=NULL;
-    int *width = 0;
-    int *height = 0; 
-    read_image_data(source_path,&data,&width,&height, 3);
-    int R = data[30];
-    int G = data[31];
-    int B = data[32];
-
-    printf(R,G,B);
-}
