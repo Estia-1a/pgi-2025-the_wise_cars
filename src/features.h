@@ -10,4 +10,6 @@ void print_pixel();
 void tenth_pixel(char *source_path);
 void stat_report();
 void color_red();
+void color_green();
+void color_blue();
 #endif
