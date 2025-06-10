@@ -122,6 +122,7 @@ void max_pixel (char* source_path) { /*Nathan*/
   if (max_pixel != NULL){
     printf("max_pixel: (%d, %d): %d, %d, %d\n", max_x, max_y, max_pixel ->R, max_pixel ->G, max_pixel ->B);
   }
+  free_image_data(data);
 }
 
 void min_pixel (char* source_path) { /*Nathan*/
@@ -151,12 +152,48 @@ void min_pixel (char* source_path) { /*Nathan*/
   if (min_pixel != NULL){
     printf("min_pixel: (%d, %d): %d, %d, %d\n", min_x, min_y, min_pixel->R, min_pixel->G, min_pixel->B);
   }
-
+  free_image_data(data);
 }
 
-void max_component (char* source_path) { /*Nathan*/
+void max_component (char* source_path, char component) { /*Nathan*/
+  unsigned char *data = NULL;
+  int width = 0;
+  int height = 0;
+  int nbChannels = 0;
+  int max_value = -1;
+  int max_x = -1;
+  int max_y = -1;
 
-}
+  for (int y = 0; y < height; y++){
+    for (int x = 0; x < width; x++){
+      pixelRGB * p = get_pixel(data, width, height, nbChannels, x, y);
+      if (p == NULL) {
+        continue; 
+      }
+      int value = 0;
+      if (component == 'R'){
+        value = p->R;
+      }
+      else if (component == 'G'){
+        value = p->G;
+      }
+      else if (component == 'B'){
+        value = p->B;
+      }
+      if (value >max_value){
+        max_value = value;
+        max_x = x;
+        max_y = y;
+      }
+          
+    }
+  }
+  if (max_value != 1){
+    printf("max_component %c (%d, %d): %d\n", component, max_x, max_y, max_value);
+  }
+  free_image_data(data);
+  }
+
 
 void min_component (char*source_path) { /*Nathan*/
 
@@ -279,8 +316,19 @@ void color_blue(char*filename)/*Loris*/ {
 
 }
 
-void color_grey(char*source_path) {
-  
+void color_grey(char*filename) {
+  unsigned char*data;
+  int width,height, nbChannels;
+  if(read_image_data(filename,&data,&width,&nbChannels)!=0){
+    return;
+  }
+  int size= width*height*nbChannels;
+  for (int i=0;i< size; i+=nbChannels){
+    data[i]=0;
+    data[i+1]=0;
+  }
+  write_image_data("image.jpeg",data,width,height);
+  free_image_data(data);
 }
 void invert(char*filename) {
   unsigned char*data;
@@ -302,7 +350,8 @@ void invert(char*filename) {
 void color_gray_luminance(char*source_path) {
   unsigned char *data = NULL;
   int i;
-  int width,height;
+  int width=0;
+  int height =0;
   int size =width*height;
   unsigned char R,G,B;
   for (i=0;i<size;i++){
