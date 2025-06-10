@@ -263,14 +263,19 @@ void color_blue(char*filename)/*Loris*/ {
 void color_grey(char*source_path) {
   unsigned char *data = NULL;
   int i;
-  for (i=0;i<width*height;i++) {
-    unsigned char R = data[3*i];
-    unsigned char G = data[3*i+1];
-    unsigned char B = data[3*i+2];
+  int width,height,channels;
+  int size =width*height;
+  unsigned char R,G,B;
+  for (i=0;i<size;i++){
+    R = data[3*i];
+    G = data[3*i+1];
+    B = data[3*i+2];
   }
   int write_image_data(const char *filename, unsigned char *data, int width, int height);
-  //unsigned char value = 0.21 * getPixel(x, y)->R + 0.72 * getPixel(x, y)->G + 0.07 * getPixel(x, y)->B
   
+  R = 0.21 * getPixel(x, y);
+  G = 0.72 * getPixel(x, y);
+  B = 0.07 * getPixel(x, y);
 }
 void invert(char*source_path) {
 
