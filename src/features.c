@@ -36,7 +36,7 @@ void helloWorld() {
     printf("Hello World !");
 }
 
-void first_pixel (){
+void first_pixel (char*source_path){
    
     unsigned char*data;
     int width, height, channels;
