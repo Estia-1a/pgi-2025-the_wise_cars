@@ -34,6 +34,11 @@ int main(int argc, char **argv) {
     helloWorld();
     first_pixel();
   } 
+  else if (strncmp( configuration.command,"dimension",9)==0){
+    /*dimension() function is defined in feature.h and implemented in feature.c*/
+    dimension(configuration.filenames[0]);
+    
+  }
   
  
   /*
