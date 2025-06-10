@@ -316,8 +316,19 @@ void color_blue(char*filename)/*Loris*/ {
 
 }
 
-void color_grey(char*source_path) {
-  
+void color_grey(char*filename) {
+  unsigned char*data;
+  int width,height, nbChannels;
+  if(read_image_data(filename,&data,&width,&nbChannels)!=0){
+    return;
+  }
+  int size= width*height*nbChannels;
+  for (int i=0;i< size; i+=nbChannels){
+    data[i]=0;
+    data[i+1]=0;
+  }
+  write_image_data("image.jpeg",data,width,height);
+  free_image_data(data);
 }
 void invert(char*source_path) {
 
@@ -326,7 +337,8 @@ void invert(char*source_path) {
 void color_gray_luminance(char*source_path) {
   unsigned char *data = NULL;
   int i;
-  int width,height;
+  int width=0;
+  int height =0;
   int size =width*height;
   unsigned char R,G,B;
   for (i=0;i<size;i++){
