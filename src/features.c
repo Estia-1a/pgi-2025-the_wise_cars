@@ -36,13 +36,6 @@ void helloWorld() {
     printf("Hello World !");
 }
 
-typedef struct _pixelRGB {
-  unsigned char R ;
-  unsigned char G ;
-  unsigned char B ;
-} pixelRGB ;
-
-
 void first_pixel (){
    
     unsigned char*data;
