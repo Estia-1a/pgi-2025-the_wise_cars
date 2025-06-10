@@ -8,4 +8,5 @@ void first_pixel();
 void second_line();
 void print_pixel();
 void tenth_pixel(char *source_path);
+void stat_report();
 #endif
