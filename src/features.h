@@ -6,5 +6,6 @@ void helloWorld();
 void dimension ();
 void first_pixel();
 void second_line();
+void print_pixel();
 
 #endif

@@ -60,6 +60,15 @@ void first_pixel (){
 void print_pixel(char*filename,int x, int y) {
  unsigned char*data;
  int width,height, channels;
- if(read_image_data(source_path,&data,&width,&height,&channels)!=0) {}
+ if(read_image_data(source_path,&data,&width,&height,&channels)!=0) {
+  return;
+ }
+pixelRGB*p= get_pixel(data,width,height,channels,x,y);
+
+if(p !=NULL){
+  printf("print_pixel (%d,%d):%d,%d,%d\n",x,y,p-> R,p-> G,p-> B);
+
+}
+free(data);
 }
 
