@@ -42,7 +42,7 @@ typedef struct _pixelRGB {
   unsigned char B ;
 } pixelRGB ;
 
-}
+
 
 typedef struct _pixelRGB {
   unsigned char R ;
