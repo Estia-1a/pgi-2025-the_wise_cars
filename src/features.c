@@ -46,7 +46,7 @@ void first_pixel (char*source_path){
     }
 
     printf("first_pixel: %d,%d,%d\n",data[0],data[1],data[2]);
-    free(data);
+    free_image_data(data);
 }
 
 
@@ -200,7 +200,7 @@ void stat_report(char*filename) /* Loris*/ {
    FILE*f = fopen("start_report.txt", "w");
 
    if (f==NULL) {
-    free(data);
+    free_image_data(data);
     return;
 
    }
@@ -214,7 +214,7 @@ void stat_report(char*filename) /* Loris*/ {
    fprintf(f,"min_component B: %d\n\n", min_b);
 
    fclose(f);
-   free(data);
+   free_image_data(data);
 
 
 }
@@ -236,7 +236,7 @@ void color_red(char*filename) /*Loris*/ {
 
   }
  write_image_data("image_out.bmp", data, width, height);
- free(data);
+ free_image_data(data);
 
 }
 
@@ -256,7 +256,7 @@ void color_green(char*filename)/*Loris*/ {
 
   }
   write_image_data("image_out.bmp", data, width, height);
-  free(data);
+  free_image_data(data);
 
 }
 
@@ -274,7 +274,7 @@ void color_blue(char*filename)/*Loris*/ {
 
   }
   write_image_data("image_out.bmp", data, width,height);
-  free(data);
+  free_image_data(data);
 
 
 }
@@ -282,8 +282,21 @@ void color_blue(char*filename)/*Loris*/ {
 void color_grey(char*source_path) {
   
 }
-void invert(char*source_path) {
+void invert(char*filename) {
+  unsigned char*data;
+  int width,height,nbChannels;
 
+  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0){
+    return;
+  }
+
+  int size=width*height*nbChannels;
+
+  for(int i=0; i< size; i++){
+    data[i]=255-data[i];
+  }
+  write_image_data("image_out.bmp",data,width,height);
+  free_image_data(data)
 }
 
 void color_gray_luminance(char*source_path) {
