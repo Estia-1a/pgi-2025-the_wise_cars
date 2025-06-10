@@ -42,13 +42,6 @@ typedef struct _pixelRGB {
   unsigned char B ;
 } pixelRGB ;
 
-void dimension (char *source_path){
-    
-    int width=0;
-    int height=0;
-    int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *channel_count);
-    printf("dimension : %d, %d\n",width, height);
-    
 }
 
 typedef struct _pixelRGB {
