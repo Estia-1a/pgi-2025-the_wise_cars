@@ -222,10 +222,41 @@ void color_red(char*filename) /*Loris*/ {
 }
 
 void color_green(char*source_path)/*Loris*/ {
+  unsigned char*data;
+  int width,height,channels;
+
+  if(read_image_data(filename,&data,&width,&height,&channels) !=0){
+    return;
+  }
+
+  int size= width*height*channels;
+
+  for (int i=0; i< size;i+= channels){
+    data[i]=0;
+    data[i+2]=0;
+
+  }
+  write_image_data("image_out.bmp", data, width, height);
+  free(data);
 
 }
 
-void color_blue(char*source_path)/*Loris*/ {
+void color_blue(char*filename)/*Loris*/ {
+  unsigned char*data;
+  int width, height, channels;
+  if(read_image_data(filename, &data,&width,&channels) !=0){
+    return;
+  }
+  int size= width*height*channels;
+
+  for (int i=0; i< size; i+=channels){
+    data[i]=0;
+    data[i+1]=0;
+
+  }
+  write_image_data("image_out.bmp", data, width,height);
+  free(data);
+
 
 }
 
