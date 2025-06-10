@@ -50,10 +50,10 @@ void first_pixel (char*source_path){
 }
 
 
-void print_pixel(char*filename,int x, int y) {
+void print_pixel(char*source_path,int x, int y) {
  unsigned char*data;
  int width,height, nbChannels;
- if(read_image_data(filename,&data,&width,&height,&nbChannels)!=0) {
+ if(read_image_data(source_path,&data,&width,&height,&nbChannels)!=0) {
   return;
  }
 pixelRGB*p= get_pixel(data,width,height,nbChannels,x,y);
@@ -199,13 +199,13 @@ void min_component (char*source_path) { /*Nathan*/
 
 }
 
-void stat_report(char*filename) /* Loris*/ {
+void stat_report(char*source_path) /* Loris*/ {
   unsigned char*data;
   int width,height,nbChannels;
   int size;
   int i;
 
-  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0){
+  if(read_image_data(source_path,&data,&width,&height,&nbChannels) !=0){
     return;
   }
   size=width*height*nbChannels;
@@ -256,11 +256,11 @@ void stat_report(char*filename) /* Loris*/ {
 
 }
 
-void color_red(char*filename) /*Loris*/ {
+void color_red(char*source_path) /*Loris*/ {
   unsigned char *data;
   int width, height, nbChannels;
 
-  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0) {
+  if(read_image_data(source_path,&data,&width,&height,&nbChannels) !=0) {
     return;
   }
 
@@ -277,11 +277,11 @@ void color_red(char*filename) /*Loris*/ {
 
 }
 
-void color_green(char*filename)/*Loris*/ {
+void color_green(char*source_path)/*Loris*/ {
   unsigned char*data;
   int width,height,nbChannels;
 
-  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0){
+  if(read_image_data(source_path,&data,&width,&height,&nbChannels) !=0){
     return;
   }
 
@@ -297,10 +297,10 @@ void color_green(char*filename)/*Loris*/ {
 
 }
 
-void color_blue(char*filename)/*Loris*/ {
+void color_blue(char*source_path)/*Loris*/ {
   unsigned char*data;
   int width, height, nbChannels;
-  if(read_image_data(filename, &data,&width,&height,&nbChannels)!=0){
+  if(read_image_data(source_path, &data,&width,&height,&nbChannels)!=0){
     return;
   }
   int size= width*height*nbChannels;
@@ -316,10 +316,10 @@ void color_blue(char*filename)/*Loris*/ {
 
 }
 
-void color_grey(char*filename) {
+void color_grey(char*source_path) {
   unsigned char*data;
   int width,height,nbChannels;
-  if(read_image_data(filename,&data,&width,&height,&nbChannels)!=0){
+  if(read_image_data(source_path,&data,&width,&height,&nbChannels)!=0){
     return;
   }
   int size= width*height*nbChannels;
@@ -330,11 +330,11 @@ void color_grey(char*filename) {
   write_image_data("image.jpeg",data,width,height);
   free_image_data(data);
 }
-void invert(char*filename) {
+void invert(char*source_path) {
   unsigned char*data;
   int width,height,nbChannels;
 
-  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0){
+  if(read_image_data(source_path,&data,&width,&height,&nbChannels) !=0){
     return;
   }
 
@@ -359,7 +359,7 @@ void color_gray_luminance(char*source_path) {
     G = data[3*i+1];
     B = data[3*i+2];
   }
-  int write_image_data(const char *filename, unsigned char *data, int width, int height);
+  int write_image_data(const char *source_path, unsigned char *data, int width, int height);
 
   R = 0.21 * getPixel(width, height);
   G = 0.72 * getPixel(width, height);
