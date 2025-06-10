@@ -12,4 +12,6 @@ void stat_report();
 void color_red();
 void color_green();
 void color_blue();
+void invert();
+
 #endif
