@@ -279,7 +279,7 @@ void color_blue(char*filename)/*Loris*/ {
 
 }
 
-void color_grey(char*source_path) {
+void color_grey(char*filename) {
   unsigned char*data;
   int width,height, nbChannels;
   if(read_image_data(filename,&data,&width,&nbChannels)!=0){
