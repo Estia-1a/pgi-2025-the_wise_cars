@@ -221,7 +221,7 @@ void color_red(char*filename) /*Loris*/ {
 
 }
 
-void color_green(char*source_path)/*Loris*/ {
+void color_green(char*filename)/*Loris*/ {
   unsigned char*data;
   int width,height,channels;
 
@@ -244,7 +244,7 @@ void color_green(char*source_path)/*Loris*/ {
 void color_blue(char*filename)/*Loris*/ {
   unsigned char*data;
   int width, height, channels;
-  if(read_image_data(filename, &data,&width,&channels) !=0){
+  if(read_image_data(filename, &data,&width,&height,&channels)!=0){
     return;
   }
   int size= width*height*channels;
