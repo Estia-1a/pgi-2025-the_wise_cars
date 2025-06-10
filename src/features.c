@@ -86,7 +86,7 @@ void tenth_pixel(char *source_path){
 
     printf(R,G,B);
 }
-void second_line() {
+void second_line(char *source_path) {
   unsigned char *data = NULL;
   int width = 0;
   int height = 0;
@@ -99,4 +99,51 @@ void second_line() {
   int B = data[width * 3 + 2];
 
   printf("second_line: %d, %d, %d\n", R, G, B);
+}
+
+void max_pixel (char* source_path) {
+
+}
+
+void min_pixel (char* source_path) {
+
+}
+
+void max_component (char* source_path){
+
+}
+
+void min_component (char*source_path){
+
+}
+
+void stat_report() {
+
+}
+
+void color_red(char*source_path){
+
+}
+
+void color_green(char*source_path){
+
+}
+
+void color_blue(char*source_path){
+
+}
+
+void color_grey(char*source_path){
+
+}
+void invert(char*source_path){
+
+}
+
+void color_gray_luminance(char*source_path){
+
+}
+
+void color_desaturate(char*source_path){
+
 }
