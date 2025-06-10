@@ -132,6 +132,32 @@ void max_pixel (char* source_path) { /*Nathan*/
 }
 
 void min_pixel (char* source_path) { /*Nathan*/
+  unsigned char *data = NULL;
+  int width = 0;
+  int height = 0;
+  int channels = 0;
+  int min_sum = 1000; 
+  int min_x = 0;
+  int min_y = 0;
+  pixelRGB * min_pixel = NULL;
+  for (int y=0; y < height; y++){
+    for (int x=0; x < width; x++){
+      pixelRGB * p = get_pixel(data, width, height, channels, x, y);
+      if (p== NULL){
+        continue; 
+        }
+      int sum = p->R + p->G + p->B;
+      if (sum < min_sum){
+        min_sum = sum;
+        min_x = x;
+        min_y = y;
+        min_pixel = p;
+      }
+    }
+  }
+  if (min_pixel != NULL){
+    printf("min_pixel: (%d, %d): %d, %d, %d\n", min_x, min_y, min_pixel->R, min_pixel->G, min_pixel->B);
+  }
 
 }
 
