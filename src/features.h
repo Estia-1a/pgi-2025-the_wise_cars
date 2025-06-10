@@ -3,5 +3,7 @@
 
 
 void helloWorld();
+void test();
 
+void tenth_pixel(char *source_path);
 #endif
