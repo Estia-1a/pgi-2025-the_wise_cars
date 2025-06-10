@@ -90,9 +90,9 @@ void second_line(char *source_path) {
   unsigned char *data = NULL;
   int width = 0;
   int height = 0;
-  int nbChannels = 0;
+  int channels = 0;
 
-  read_image_data(source_path, &data, &width, &height, &nbChannels);
+  read_image_data(source_path, &data, &width, &height, &channels);
 
   int R = data[width * 3];
   int G = data[width * 3 + 1];
@@ -101,19 +101,45 @@ void second_line(char *source_path) {
   printf("second_line: %d, %d, %d\n", R, G, B);
 }
 
-void max_pixel (char* source_path) {
+void max_pixel (char* source_path) { /*Nathan*/
+  unsigned char *data = NULL;
+  
+  int width = 0;
+  int height = 0;
+  int channels = 0;
+  int max_sum = -1;
+  int max_x = 0;
+  int max_y = 0; 
+
+  pixelRGB * max_pixel = NULL;
+
+  for (int y=0; y < height; y++){
+    for (int x=0; x < width; x++){
+      pixelRGB * p = get_pixel(data, width, height, channels, x, y);
+      int sum = p->R + p->G + p->B;
+
+      if (sum > max_sum){
+        max_sum = sum;
+        max_x = x;
+        max_y = y;
+        max_pixel = p;
+      }
+    }
+  }
+  if (max_pixel != NULL){
+    printf("max_pixel: (%d, %d): %d, %d, %d\n", max_x, max_y, max_pixel ->R, max_pixel ->G, max_pixel ->B);
+  }
+}
+
+void min_pixel (char* source_path) { /*Nathan*/
 
 }
 
-void min_pixel (char* source_path) {
+void max_component (char* source_path) { /*Nathan*/
 
 }
 
-void max_component (char* source_path) {
-
-}
-
-void min_component (char*source_path) {
+void min_component (char*source_path) { /*Nathan*/
 
 }
 
