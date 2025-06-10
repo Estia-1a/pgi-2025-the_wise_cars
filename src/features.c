@@ -52,11 +52,11 @@ void first_pixel (){
 
 void print_pixel(char*filename,int x, int y) {
  unsigned char*data;
- int width,height, channels;
- if(read_image_data(source_path,&data,&width,&height,&channels)!=0) {
+ int width,height, nbChannels;
+ if(read_image_data(source_path,&data,&width,&height,&nbChannels)!=0) {
   return;
  }
-pixelRGB*p= get_pixel(data,width,height,channels,x,y);
+pixelRGB*p= get_pixel(data,width,height,nbChannels,x,y);
 
 if(p !=NULL){
   printf("print_pixel (%d,%d):%d,%d,%d\n",x,y,p-> R,p-> G,p-> B);
@@ -83,9 +83,9 @@ void second_line(char *source_path) {
   unsigned char *data = NULL;
   int width = 0;
   int height = 0;
-  int channels = 0;
+  int nbChannels = 0;
 
-  read_image_data(source_path, &data, &width, &height, &channels);
+  read_image_data(source_path, &data, &width, &height, &nbChannels);
 
   int R = data[width * 3];
   int G = data[width * 3 + 1];
@@ -99,7 +99,7 @@ void max_pixel (char* source_path) { /*Nathan*/
   
   int width = 0;
   int height = 0;
-  int channels = 0;
+  int nbChannels = 0;
   int max_sum = -1;
   int max_x = 0;
   int max_y = 0; 
@@ -108,7 +108,7 @@ void max_pixel (char* source_path) { /*Nathan*/
 
   for (int y=0; y < height; y++){
     for (int x=0; x < width; x++){
-      pixelRGB * p = get_pixel(data, width, height, channels, x, y);
+      pixelRGB * p = get_pixel(data, width, height, nbChannels, x, y);
       int sum = p->R + p->G + p->B;
 
       if (sum > max_sum){
@@ -128,14 +128,14 @@ void min_pixel (char* source_path) { /*Nathan*/
   unsigned char *data = NULL;
   int width = 0;
   int height = 0;
-  int channels = 0;
+  int nbChannels = 0;
   int min_sum = 1000; 
   int min_x = 0;
   int min_y = 0;
   pixelRGB * min_pixel = NULL;
   for (int y=0; y < height; y++){
     for (int x=0; x < width; x++){
-      pixelRGB * p = get_pixel(data, width, height, channels, x, y);
+      pixelRGB * p = get_pixel(data, width, height, nbChannels, x, y);
       if (p== NULL){
         continue; 
         }
@@ -164,20 +164,20 @@ void min_component (char*source_path) { /*Nathan*/
 
 void stat_report(char*filename) /* Loris*/ {
   unsigned char*data;
-  int width,height,channels;
+  int width,height,nbChannels;
   int size;
   int i;
 
-  if(read_image_data(filename,&data,&width,&height,&channels) !=0){
+  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0){
     return;
   }
-  size=width*height*channels;
+  size=width*height*nbChannels;
   int max_pixel=0;
   int min_pixel =255;
   int max_r=0, max_g=0, max_b=0;
   int min_r=255, min_g=255, min_b=255;
 
-  for(i=0; i< size; i+=channels){
+  for(i=0; i< size; i+=nbChannels){
     int r= data[i];
     int g = data[i + 1];
     int b= data[i+2];
@@ -221,15 +221,15 @@ void stat_report(char*filename) /* Loris*/ {
 
 void color_red(char*filename) /*Loris*/ {
   unsigned char *data;
-  int width, height, channels;
+  int width, height, nbChannels;
 
-  if(read_image_data(filename,&data,&width,&height,&channels) !=0) {
+  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0) {
     return;
   }
 
-  int size = width* height * channels;
+  int size = width* height * nbChannels;
 
-  for(int i=0; i< size; i+= channels) {
+  for(int i=0; i< size; i+= nbChannels) {
     data[i+1]=0;
     data[i+2]=0;
 
@@ -242,15 +242,15 @@ void color_red(char*filename) /*Loris*/ {
 
 void color_green(char*filename)/*Loris*/ {
   unsigned char*data;
-  int width,height,channels;
+  int width,height,nbChannels;
 
-  if(read_image_data(filename,&data,&width,&height,&channels) !=0){
+  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0){
     return;
   }
 
-  int size= width*height*channels;
+  int size= width*height*nbChannels;
 
-  for (int i=0; i< size;i+= channels){
+  for (int i=0; i< size;i+= nbChannels){
     data[i]=0;
     data[i+2]=0;
 
@@ -262,13 +262,13 @@ void color_green(char*filename)/*Loris*/ {
 
 void color_blue(char*filename)/*Loris*/ {
   unsigned char*data;
-  int width, height, channels;
-  if(read_image_data(filename, &data,&width,&height,&channels)!=0){
+  int width, height, nbChannels;
+  if(read_image_data(filename, &data,&width,&height,&nbChannels)!=0){
     return;
   }
-  int size= width*height*channels;
+  int size= width*height*nbChannels;
 
-  for (int i=0; i< size; i+=channels){
+  for (int i=0; i< size; i+=nbChannels){
     data[i]=0;
     data[i+1]=0;
 
@@ -282,7 +282,7 @@ void color_blue(char*filename)/*Loris*/ {
 void color_grey(char*source_path) {
   unsigned char *data = NULL;
   int i;
-  int width,height,channels;
+  int width,height,nbChannels;
   int size =width*height;
   unsigned char R,G,B;
   for (i=0;i<size;i++){
