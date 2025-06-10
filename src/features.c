@@ -344,7 +344,7 @@ void invert(char*filename) {
     data[i]=255-data[i];
   }
   write_image_data("image_out.bmp",data,width,height);
-  free_image_data(data)
+  free_image_data(data);
 }
 
 void color_gray_luminance(char*source_path) {
