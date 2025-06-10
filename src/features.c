@@ -282,7 +282,7 @@ void color_blue(char*filename)/*Loris*/ {
 void color_grey(char*filename) {
   unsigned char*data;
   int width,height, nbChannels;
-  if(read_image_data(filename,&data,&width,&nbChannels)!=0){
+  if(read_image_data(filename,&data,&width,&height,&nbChannels)!=0){
     return;
   }
   int size= width*height*nbChannels;
