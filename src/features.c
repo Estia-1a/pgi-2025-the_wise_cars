@@ -86,3 +86,6 @@ void tenth_pixel(char *source_path){
 
     printf(R,G,B);
 }
+void second_line() {
+  
+}
