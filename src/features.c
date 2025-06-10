@@ -186,7 +186,7 @@ void color_blue(char*source_path)/*Loris*/ {
 }
 
 void color_grey(char*source_path) {
-
+  //unsigned char value = 0.21 * getPixel(x, y)->R + 0.72 * getPixel(x, y)->G + 0.07 * getPixel(x, y)->B
 }
 void invert(char*source_path) {
 
