@@ -58,10 +58,8 @@ void first_pixel (){
 
 
 void print_pixel(char*filename,int x, int y) {
- 
+ unsigned char*data;
+ int width,height, channels;
+ if(read_image_data(source_path,&data,&width,&height,&channels)!=0) {}
 }
 
-void second_line(char* source_path){
-
-    
-}
