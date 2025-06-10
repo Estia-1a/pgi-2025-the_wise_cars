@@ -5,6 +5,6 @@
 void helloWorld();
 void dimension ();
 void first_pixel();
-void second_line(char *source_path);
+void second_line();
 
 #endif
