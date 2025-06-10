@@ -143,24 +143,76 @@ void min_component (char*source_path) { /*Nathan*/
 
 }
 
-void stat_report() {
+void stat_report(char*filename) /* Loris*/ {
+  unsigned char*data;
+  int width,height,channels;
+  int size;
+  int i;
+
+  if(read_image_data(filename,&data,&width,&height,&channels) !=0){
+    return;
+  }
+  size=width*height*channels;
+  int max_pixel=0;
+  int min_pixel =255;
+  int max_r=0, max_g=255, min_b=255;
+
+  for(i=0; i< size; i+=channels){
+    int r= data[i];
+    int g = data[i + 1];
+    int b= data[i+2];
+
+    int pixel_value=(r+g+b)/3;
+
+    if(pixel_value > max_pixel) max_pixel = pixel_value;
+    if(pixel_value < min_pixel)min_pixel = pixel_value;
+
+    if(r> max_r) max_r =r;
+    if(g> max_g) max_g =g;
+    if(b> max_b) max_b =b;
+
+    if (r< min_r ) min_r =r;
+    if (g < min_g) min_g =g;
+    if (b < min_b) min_b= b;
+
+
+  }
+   FILE*f = fopen("start_report.txt", "w");
+
+   if (f==NULL) {
+    free(data);
+    return;
+
+   }
+   fprintf(f,"max_pixel: %d\n\n", max_pixel);
+   fprintf(f,"min_pixel: %d\n\n", min_pixel);
+   fprintf(f,"max_component R: %d\n\n", max_r);
+   fprintf(f,"max_component G: %d\n\n", max_g);
+   fprintf(f, "max_component B: %d\n\n",max_b);
+   fprintf(f,"min_component R: %d\n\n", min_r);
+   fprintf(f,"min_component G: %d\n\n",min_g);
+   fprintf(f,"min_component B: %d\n\n", min_b);
+
+   fclose(f);
+   free(data);
+
 
 }
 
-void color_red(char*source_path) {
+void color_red(char*source_path) /*Loris*/ {
 
 }
 
-void color_green(char*source_path) {
+void color_green(char*source_path)/*Loris*/ {
 
 }
 
-void color_blue(char*source_path) {
+void color_blue(char*source_path)/*Loris*/ {
 
 }
 
 void color_grey(char*source_path) {
-
+  //unsigned char value = 0.21 * getPixel(x, y)->R + 0.72 * getPixel(x, y)->G + 0.07 * getPixel(x, y)->B
 }
 void invert(char*source_path) {
 
