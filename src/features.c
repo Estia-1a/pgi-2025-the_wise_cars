@@ -272,7 +272,7 @@ void color_red(char*source_path) /*Loris*/ {
 
 
   }
- write_image_data("image_out.bmp", data, width, height);
+ write_image_data("image.jpeg", data, width, height);
  free_image_data(data);
 
 }
@@ -292,7 +292,7 @@ void color_green(char*source_path)/*Loris*/ {
     data[i+2]=0;
 
   }
-  write_image_data("image_out.bmp", data, width, height);
+  write_image_data("image.jpeg", data, width, height);
   free_image_data(data);
 
 }
@@ -310,7 +310,7 @@ void color_blue(char*source_path)/*Loris*/ {
     data[i+1]=0;
 
   }
-  write_image_data("image_out.bmp", data, width,height);
+  write_image_data("image.jpeg", data, width,height);
   free_image_data(data);
 
 
@@ -343,7 +343,7 @@ void invert(char*source_path) {
   for(int i=0; i< size; i++){
     data[i]=255-data[i];
   }
-  write_image_data("image_out.bmp",data,width,height);
+  write_image_data("image.jpeg",data,width,height);
   free_image_data(data);
 }
 
