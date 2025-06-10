@@ -61,3 +61,7 @@ void print_pixel(char*filename,int x, int y) {
  
 }
 
+void second_line(char* source_path){
+
+    
+}
