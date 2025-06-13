@@ -62,9 +62,7 @@ if(p !=NULL){
 }
 
 }
-void test(){
-    printf("test test");
-}
+
 
 void tenth_pixel(char *source_path){
     unsigned char*data=NULL;
