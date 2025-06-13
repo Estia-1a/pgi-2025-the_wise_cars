@@ -58,12 +58,12 @@ void print_pixel(char*source_path,int x, int y) {
  if(read_image_data(source_path,&data,&width,&height,&nbChannels)!=0) {
   return;
  }
-pixelRGB*p= get_pixel(data,width,height,nbChannels,x,y)
+pixelRGB*p= get_pixel(data,width,height,nbChannels,x,y);
 
 if(p !=NULL){
   printf("print_pixel (%d,%d):%d,%d,%d\n",x,y,p-> R,p-> G,p-> B);
 
-}
+ }
 
 }
 
