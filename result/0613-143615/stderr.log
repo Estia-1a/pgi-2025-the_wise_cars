@@ -1,0 +1,100 @@
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:55:12: warning: implicit declaration of function ‘get_pixel’; did you mean ‘first_pixel’? [-Wimplicit-function-declaration]
+   55 | pixelRGB*p=get_pixel(unsigned char*data,width, height,nbChannels,int x,int y){
+      |            ^~~~~~~~~
+      |            first_pixel
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:55:22: error: expected expression before ‘unsigned’
+   55 | pixelRGB*p=get_pixel(unsigned char*data,width, height,nbChannels,int x,int y){
+      |                      ^~~~~~~~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:55:78: error: expected ‘,’ or ‘;’ before ‘{’ token
+   55 | pixelRGB*p=get_pixel(unsigned char*data,width, height,nbChannels,int x,int y){
+      |                                                                              ^
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c: In function ‘print_pixel’:
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:70:13: warning: initialization of ‘pixelRGB *’ {aka ‘struct _pixelRGB *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   70 | pixelRGB*p= get_pixel(data,width,height,nbChannels,x,y)
+      |             ^~~~~~~~~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:72:1: error: expected ‘,’ or ‘;’ before ‘if’
+   72 | if(p !=NULL){
+      | ^~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c: In function ‘tenth_pixel’:
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:84:39: warning: passing argument 3 of ‘read_image_data’ from incompatible pointer type [-Wincompatible-pointer-types]
+   84 |     read_image_data(source_path,&data,&width,&height, 3);
+      |                                       ^~~~~~
+      |                                       |
+      |                                       int **
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:18:70: note: expected ‘int *’ but argument is of type ‘int **’
+   18 | int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *nbChannels){
+      |                                                                 ~~~~~^~~~~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:84:46: warning: passing argument 4 of ‘read_image_data’ from incompatible pointer type [-Wincompatible-pointer-types]
+   84 |     read_image_data(source_path,&data,&width,&height, 3);
+      |                                              ^~~~~~~
+      |                                              |
+      |                                              int **
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:18:82: note: expected ‘int *’ but argument is of type ‘int **’
+   18 | int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *nbChannels){
+      |                                                                             ~~~~~^~~~~~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:84:55: warning: passing argument 5 of ‘read_image_data’ makes pointer from integer without a cast [-Wint-conversion]
+   84 |     read_image_data(source_path,&data,&width,&height, 3);
+      |                                                       ^
+      |                                                       |
+      |                                                       int
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:18:95: note: expected ‘int *’ but argument is of type ‘int’
+   18 | int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *nbChannels){
+      |                                                                                          ~~~~~^~~~~~~~~~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:89:12: warning: passing argument 1 of ‘printf’ makes pointer from integer without a cast [-Wint-conversion]
+   89 |     printf(R,G,B);
+      |            ^
+      |            |
+      |            int
+In file included from /usr/include/stdio.h:980,
+                 from /home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:1:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:84:32: note: expected ‘const char * restrict’ but argument is of type ‘int’
+   84 | printf (const char *__restrict __fmt, ...)
+      |         ~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c: In function ‘max_pixel’:
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:122:22: warning: initialization of ‘pixelRGB *’ {aka ‘struct _pixelRGB *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  122 |       pixelRGB * p = get_pixel(data, width, height, nbChannels, x, y);
+      |                      ^~~~~~~~~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:123:25: error: ‘pixelRGB’ {aka ‘struct _pixelRGB’} has no member named ‘G’
+  123 |       int sum = p->R + p->G + p->B;
+      |                         ^~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:123:32: error: ‘pixelRGB’ {aka ‘struct _pixelRGB’} has no member named ‘B’
+  123 |       int sum = p->R + p->G + p->B;
+      |                                ^~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:134:88: error: ‘pixelRGB’ {aka ‘struct _pixelRGB’} has no member named ‘G’
+  134 |     printf("max_pixel: (%d, %d): %d, %d, %d\n", max_x, max_y, max_pixel ->R, max_pixel ->G, max_pixel ->B);
+      |                                                                                        ^~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:134:103: error: ‘pixelRGB’ {aka ‘struct _pixelRGB’} has no member named ‘B’
+  134 |     printf("max_pixel: (%d, %d): %d, %d, %d\n", max_x, max_y, max_pixel ->R, max_pixel ->G, max_pixel ->B);
+      |                                                                                                       ^~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c: In function ‘min_pixel’:
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:149:22: warning: initialization of ‘pixelRGB *’ {aka ‘struct _pixelRGB *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  149 |       pixelRGB * p = get_pixel(data, width, height, nbChannels, x, y);
+      |                      ^~~~~~~~~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:153:25: error: ‘pixelRGB’ {aka ‘struct _pixelRGB’} has no member named ‘G’
+  153 |       int sum = p->R + p->G + p->B;
+      |                         ^~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:153:32: error: ‘pixelRGB’ {aka ‘struct _pixelRGB’} has no member named ‘B’
+  153 |       int sum = p->R + p->G + p->B;
+      |                                ^~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:163:86: error: ‘pixelRGB’ {aka ‘struct _pixelRGB’} has no member named ‘G’
+  163 |     printf("min_pixel: (%d, %d): %d, %d, %d\n", min_x, min_y, min_pixel->R, min_pixel->G, min_pixel->B);
+      |                                                                                      ^~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:163:100: error: ‘pixelRGB’ {aka ‘struct _pixelRGB’} has no member named ‘B’
+  163 |     printf("min_pixel: (%d, %d): %d, %d, %d\n", min_x, min_y, min_pixel->R, min_pixel->G, min_pixel->B);
+      |                                                                                                    ^~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c: In function ‘max_component’:
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:178:22: warning: initialization of ‘pixelRGB *’ {aka ‘struct _pixelRGB *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  178 |       pixelRGB * p = get_pixel(data, width, height, nbChannels, x, y);
+      |                      ^~~~~~~~~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:187:18: error: ‘pixelRGB’ {aka ‘struct _pixelRGB’} has no member named ‘G’
+  187 |         value = p->G;
+      |                  ^~
+/home/runner/work/pgi-2025-the_wise_cars/pgi-2025-the_wise_cars/src/features.c:190:18: error: ‘pixelRGB’ {aka ‘struct _pixelRGB’} has no member named ‘B’
+  190 |         value = p->B;
+      |                  ^~
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:93: CMakeFiles/freud.dir/src/features.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
