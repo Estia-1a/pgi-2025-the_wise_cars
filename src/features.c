@@ -29,7 +29,6 @@ void dimension (char *source_path){
     int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *channel_count);
 
     printf("la dimension est : %d, %d\n",width, height);
-    free_image_data(data);
 }
 
 void helloWorld() {
@@ -46,7 +45,6 @@ void first_pixel (char*source_path){
     }
 
     printf("first_pixel: %d,%d,%d\n",data[0],data[1],data[2]);
-    free_image_data(data);
 }
 
 
@@ -62,11 +60,9 @@ if(p !=NULL){
   printf("print_pixel (%d,%d):%d,%d,%d\n",x,y,p-> R,p-> G,p-> B);
 
 }
-free(data);
+
 }
-void test(){
-    printf("test test");
-}
+
 
 void tenth_pixel(char *source_path){
     unsigned char*data=NULL;
@@ -79,6 +75,8 @@ void tenth_pixel(char *source_path){
 
     printf(R,G,B);
 }
+
+
 void second_line(char *source_path) {
   unsigned char *data = NULL;
   int width = 0;
@@ -122,7 +120,6 @@ void max_pixel (char* source_path) { /*Nathan*/
   if (max_pixel != NULL){
     printf("max_pixel: (%d, %d): %d, %d, %d\n", max_x, max_y, max_pixel ->R, max_pixel ->G, max_pixel ->B);
   }
-  free_image_data(data);
 }
 
 void min_pixel (char* source_path) { /*Nathan*/
@@ -152,7 +149,6 @@ void min_pixel (char* source_path) { /*Nathan*/
   if (min_pixel != NULL){
     printf("min_pixel: (%d, %d): %d, %d, %d\n", min_x, min_y, min_pixel->R, min_pixel->G, min_pixel->B);
   }
-  free_image_data(data);
 }
 
 void max_component (char* source_path, char component) { /*Nathan*/
@@ -191,7 +187,6 @@ void max_component (char* source_path, char component) { /*Nathan*/
   if (max_value != 1){
     printf("max_component %c (%d, %d): %d\n", component, max_x, max_y, max_value);
   }
-  free_image_data(data);
   }
 
 
@@ -199,13 +194,13 @@ void min_component (char*source_path) { /*Nathan*/
 
 }
 
-void stat_report(char*filename) /* Loris*/ {
+void stat_report(char*source_path) /* Loris*/ {
   unsigned char*data;
   int width,height,nbChannels;
   int size;
   int i;
 
-  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0){
+  if(read_image_data(source_path,&data,&width,&height,&nbChannels) !=0){
     return;
   }
   size=width*height*nbChannels;
@@ -237,7 +232,6 @@ void stat_report(char*filename) /* Loris*/ {
    FILE*f = fopen("start_report.txt", "w");
 
    if (f==NULL) {
-    free_image_data(data);
     return;
 
    }
@@ -251,16 +245,15 @@ void stat_report(char*filename) /* Loris*/ {
    fprintf(f,"min_component B: %d\n\n", min_b);
 
    fclose(f);
-   free_image_data(data);
 
 
 }
 
-void color_red(char*filename) /*Loris*/ {
+void color_red(char*source_path) /*Loris*/ {
   unsigned char *data;
   int width, height, nbChannels;
 
-  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0) {
+  if(read_image_data(source_path,&data,&width,&height,&nbChannels) !=0) {
     return;
   }
 
@@ -272,16 +265,15 @@ void color_red(char*filename) /*Loris*/ {
 
 
   }
- write_image_data("image_out.bmp", data, width, height);
- free_image_data(data);
+ write_image_data("image.jpeg", data, width, height);
 
 }
 
-void color_green(char*filename)/*Loris*/ {
+void color_green(char*source_path)/*Loris*/ {
   unsigned char*data;
   int width,height,nbChannels;
 
-  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0){
+  if(read_image_data(source_path,&data,&width,&height,&nbChannels) !=0){
     return;
   }
 
@@ -292,15 +284,14 @@ void color_green(char*filename)/*Loris*/ {
     data[i+2]=0;
 
   }
-  write_image_data("image_out.bmp", data, width, height);
-  free_image_data(data);
+  write_image_data("image.jpeg", data, width, height);
 
 }
 
-void color_blue(char*filename)/*Loris*/ {
+void color_blue(char*source_path)/*Loris*/ {
   unsigned char*data;
   int width, height, nbChannels;
-  if(read_image_data(filename, &data,&width,&height,&nbChannels)!=0){
+  if(read_image_data(source_path, &data,&width,&height,&nbChannels)!=0){
     return;
   }
   int size= width*height*nbChannels;
@@ -310,16 +301,15 @@ void color_blue(char*filename)/*Loris*/ {
     data[i+1]=0;
 
   }
-  write_image_data("image_out.bmp", data, width,height);
-  free_image_data(data);
+  write_image_data("image.jpeg", data, width,height);
 
 
 }
 
-void color_grey(char*filename) {
+void color_grey(char*source_path) {
   unsigned char*data;
   int width,height,nbChannels;
-  if(read_image_data(filename,&data,&width,&height,&nbChannels)!=0){
+  if(read_image_data(source_path,&data,&width,&height,&nbChannels)!=0){
     return;
   }
   int size= width*height*nbChannels;
@@ -328,13 +318,13 @@ void color_grey(char*filename) {
     data[i+1]=0;
   }
   write_image_data("image.jpeg",data,width,height);
-  free_image_data(data);
 }
-void invert(char*filename) {
+
+void invert(char*source_path) {
   unsigned char*data;
   int width,height,nbChannels;
 
-  if(read_image_data(filename,&data,&width,&height,&nbChannels) !=0){
+  if(read_image_data(source_path,&data,&width,&height,&nbChannels) !=0){
     return;
   }
 
@@ -343,8 +333,7 @@ void invert(char*filename) {
   for(int i=0; i< size; i++){
     data[i]=255-data[i];
   }
-  write_image_data("image_out.bmp",data,width,height);
-  free_image_data(data);
+  write_image_data("image.jpeg",data,width,height);
 }
 
 void color_gray_luminance(char*source_path) {
@@ -353,19 +342,42 @@ void color_gray_luminance(char*source_path) {
   int width=0;
   int height =0;
   int size =width*height;
+  unsigned char Rold,Gold,Bold;
   unsigned char R,G,B;
   for (i=0;i<size;i++){
-    R = data[3*i];
-    G = data[3*i+1];
-    B = data[3*i+2];
+    Rold = data[3*i];
+    Gold = data[3*i+1];
+    Bold = data[3*i+2];
   }
-  int write_image_data(const char *filename, unsigned char *data, int width, int height);
+  int write_image_data(const char *source_path, unsigned char *data, int width, int height);
 
-  R = 0.21 * getPixel(width, height);
-  G = 0.72 * getPixel(width, height);
-  B = 0.07 * getPixel(width, height);
+  R = 0.21 * Rold;
+  G = 0.72 * Gold;
+  B = 0.07 * Bold;
 }
 
 void color_desaturate(char*source_path) {
-
+  unsigned char *data = NULL;
+  int i;
+  int width=0;
+  int height =0;
+  int size =width*height;
+  unsigned char Rmin,Gmin,Bmin;
+  unsigned char Rmax,Gmax,Bmax;
+  unsigned char R,G,B;
+  for (i=0;i<size;i++){
+    Rmin = 255-data[3*i];
+    Gmin = 255-data[3*i+1];
+    Bmin = 255-data[3*i+2];
+    Rmax=data[3*i];
+    Bmax=data[3*i+1];
+    Bmax=data[3*i+2];
+    /* Formule :
+    new_val = (min(R, G, B) + max(R, G, B)) / 2;
+    */
+    R= (Rmin + Rmax)/2;
+    G=(Gmin + Gmax)/2;
+    B=(Gmin + Gmax)/2;
+  }
+  int write_image_data(const char *source_path, unsigned char *data, int width, int height);
 }
