@@ -203,7 +203,39 @@ void max_component (char* source_path, char component) { /*Nathan*/
   }
 
 
-void min_component (char*source_path) { /*Nathan*/
+void min_component (char*source_path, char component) { /*Nathan*/
+  unsigned char *data = NULL;
+  int width = 0;
+  int height = 0;
+  int nbChannels = 0;
+  int min_value = 1000;
+  int min_x = -1;
+  int min_y = -1;
+  for (int y = 0; y < height; y++){
+    for (int x = 0; x < width; x++){
+      pixelRGB * p = get_pixel(data, width, height, nbChannels, x, y);
+      if (p == NULL){
+        continue;
+      }
+      int value = 0;
+      if (component == 'R'){
+        value = p->R;
+      }
+      else if (component == 'G'){
+        value = p->G;
+      }
+      else if (component == 'B'){
+        value = p->B;
+      }
+      if (value < min_value){
+        min_value = value;
+        min_x = x;
+        min_y = y;
+      }
+      
+      
+    }
+  }
 
 }
 
