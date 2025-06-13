@@ -367,5 +367,28 @@ void color_gray_luminance(char*source_path) {
 }
 
 void color_desaturate(char*source_path) {
-
+  unsigned char *data = NULL;
+  int i;
+  int width=0;
+  int height =0;
+  int size =width*height;
+  unsigned char Rmin,Gmin,Bmin;
+  unsigned char Rmax,Gmax,Bmax;
+  unsigned char R,G,B;
+  for (i=0;i<size;i++){
+    Rmin = 255-data[3*i];
+    Gmin = 255-data[3*i+1];
+    Bmin = 255-data[3*i+2];
+    Rmax=data[3*i];
+    Bmax=data[3*i+1];
+    Bmax=data[3*i+2];
+    /* Formule :
+    new_val = (min(R, G, B) + max(R, G, B)) / 2;
+    */
+    R= (Rmin + Rmax)/2;
+    G=(Gmin + Gmax)/2;
+    B=(Gmin + Gmax)/2;
+  }
+  int write_image_data(const char *source_path, unsigned char *data, int width, int height);
+  free_image_data(data);
 }
