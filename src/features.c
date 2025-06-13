@@ -60,7 +60,7 @@ if(p !=NULL){
   printf("print_pixel (%d,%d):%d,%d,%d\n",x,y,p-> R,p-> G,p-> B);
 
 }
-free_image_data(data);
+
 }
 void test(){
     printf("test test");
@@ -342,17 +342,18 @@ void color_gray_luminance(char*source_path) {
   int width=0;
   int height =0;
   int size =width*height;
+  unsigned char Rold,Gold,Bold;
   unsigned char R,G,B;
   for (i=0;i<size;i++){
-    R = data[3*i];
-    G = data[3*i+1];
-    B = data[3*i+2];
+    Rold = data[3*i];
+    Gold = data[3*i+1];
+    Bold = data[3*i+2];
   }
   int write_image_data(const char *source_path, unsigned char *data, int width, int height);
 
-  R = 0.21 * getPixel(width, height);
-  G = 0.72 * getPixel(width, height);
-  B = 0.07 * getPixel(width, height);
+  R = 0.21 * Rold;
+  G = 0.72 * Gold;
+  B = 0.07 * Bold;
 }
 
 void color_desaturate(char*source_path) {
