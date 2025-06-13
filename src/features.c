@@ -29,7 +29,6 @@ void dimension (char *source_path){
     int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *channel_count);
 
     printf("la dimension est : %d, %d\n",width, height);
-    free_image_data(data);
 }
 
 void helloWorld() {
@@ -46,7 +45,6 @@ void first_pixel (char*source_path){
     }
 
     printf("first_pixel: %d,%d,%d\n",data[0],data[1],data[2]);
-    free_image_data(data);
 }
 
 
@@ -122,7 +120,6 @@ void max_pixel (char* source_path) { /*Nathan*/
   if (max_pixel != NULL){
     printf("max_pixel: (%d, %d): %d, %d, %d\n", max_x, max_y, max_pixel ->R, max_pixel ->G, max_pixel ->B);
   }
-  free_image_data(data);
 }
 
 void min_pixel (char* source_path) { /*Nathan*/
@@ -152,7 +149,6 @@ void min_pixel (char* source_path) { /*Nathan*/
   if (min_pixel != NULL){
     printf("min_pixel: (%d, %d): %d, %d, %d\n", min_x, min_y, min_pixel->R, min_pixel->G, min_pixel->B);
   }
-  free_image_data(data);
 }
 
 void max_component (char* source_path, char component) { /*Nathan*/
@@ -191,7 +187,6 @@ void max_component (char* source_path, char component) { /*Nathan*/
   if (max_value != 1){
     printf("max_component %c (%d, %d): %d\n", component, max_x, max_y, max_value);
   }
-  free_image_data(data);
   }
 
 
@@ -237,7 +232,6 @@ void stat_report(char*source_path) /* Loris*/ {
    FILE*f = fopen("start_report.txt", "w");
 
    if (f==NULL) {
-    free_image_data(data);
     return;
 
    }
@@ -251,7 +245,6 @@ void stat_report(char*source_path) /* Loris*/ {
    fprintf(f,"min_component B: %d\n\n", min_b);
 
    fclose(f);
-   free_image_data(data);
 
 
 }
@@ -273,7 +266,6 @@ void color_red(char*source_path) /*Loris*/ {
 
   }
  write_image_data("image.jpeg", data, width, height);
- free_image_data(data);
 
 }
 
@@ -293,7 +285,6 @@ void color_green(char*source_path)/*Loris*/ {
 
   }
   write_image_data("image.jpeg", data, width, height);
-  free_image_data(data);
 
 }
 
@@ -311,7 +302,6 @@ void color_blue(char*source_path)/*Loris*/ {
 
   }
   write_image_data("image.jpeg", data, width,height);
-  free_image_data(data);
 
 
 }
@@ -328,8 +318,8 @@ void color_grey(char*source_path) {
     data[i+1]=0;
   }
   write_image_data("image.jpeg",data,width,height);
-  free_image_data(data);
 }
+
 void invert(char*source_path) {
   unsigned char*data;
   int width,height,nbChannels;
@@ -344,7 +334,6 @@ void invert(char*source_path) {
     data[i]=255-data[i];
   }
   write_image_data("image.jpeg",data,width,height);
-  free_image_data(data);
 }
 
 void color_gray_luminance(char*source_path) {
@@ -390,5 +379,4 @@ void color_desaturate(char*source_path) {
     B=(Gmin + Gmax)/2;
   }
   int write_image_data(const char *source_path, unsigned char *data, int width, int height);
-  free_image_data(data);
 }
