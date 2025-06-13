@@ -75,6 +75,8 @@ void tenth_pixel(char *source_path){
 
     printf(R,G,B);
 }
+
+
 void second_line(char *source_path) {
   unsigned char *data = NULL;
   int width = 0;

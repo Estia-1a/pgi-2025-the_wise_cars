@@ -55,5 +55,39 @@ int main(int argc, char **argv) {
     print_pixel(configuration.filenames[0],x,y);
   }
 
+  ///////
+  else if (strncmp(configuration.command,"max_pixel", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
+  else if (strncmp(configuration.command,"min_pixel", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
+  else if (strncmp(configuration.command,"max_component", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
+  else if (strncmp(configuration.command,"min_component", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
+  else if (strncmp(configuration.command,"stat_report", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
+  else if (strncmp(configuration.command,"color_red", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
+  else if (strncmp(configuration.command,"color_green", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
+  else if (strncmp(configuration.command,"color_blue", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
+  else if (strncmp(configuration.command,"color_grey", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
+  else if (strncmp(configuration.command,"color_gray_luminance", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
+  else if (strncmp(configuration.command,"color_desaturate", 11)==0) {
+    second_line(configuration.filenames[0]);
+  }
   return 0;
 }
