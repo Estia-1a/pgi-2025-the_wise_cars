@@ -47,6 +47,14 @@ void first_pixel (char*source_path){
     printf("first_pixel: %d,%d,%d\n",data[0],data[1],data[2]);
 }
 
+pixelRGB*p=get_pixel(unsigned char*data,width, height,nbChannels,int x,int y){
+  if (x<0 || x>=width || y<0 || y>=height){
+    return NULL;
+  }
+  int index=(y*width+x)* nbChannels;
+  reurn (pixelRGB*)(data+index);
+
+}
 
 void print_pixel(char*source_path,int x, int y) {
  unsigned char*data;
@@ -54,7 +62,7 @@ void print_pixel(char*source_path,int x, int y) {
  if(read_image_data(source_path,&data,&width,&height,&nbChannels)!=0) {
   return;
  }
-pixelRGB*p= get_pixel(data,width,height,nbChannels,x,y);
+pixelRGB*p= get_pixel(data,width,height,nbChannels,x,y)
 
 if(p !=NULL){
   printf("print_pixel (%d,%d):%d,%d,%d\n",x,y,p-> R,p-> G,p-> B);
