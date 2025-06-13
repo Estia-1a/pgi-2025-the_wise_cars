@@ -50,7 +50,7 @@ void first_pixel (char*source_path){
 }
 
 
-void print_pixel(char*filename,int x, int y) {
+void print_pixel(char*source_path,int x, int y) {
  unsigned char*data;
  int width,height, nbChannels;
  if(read_image_data(source_path,&data,&width,&height,&nbChannels)!=0) {
