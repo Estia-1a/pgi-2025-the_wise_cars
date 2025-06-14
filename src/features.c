@@ -25,3 +25,10 @@ void dimension (char *source_path){
     read_image_data(source_path, &data, &width, &height, &channels);
     printf("dimensions de l'image : %d, %d \n", width, height);
 }
+
+void first_pixel(char *source_path){
+    int width, height, channels;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &channels);
+    printf("RGB du premier pixel : %d,%d,%d \n",data[0],data[1],data[2]);
+}
