@@ -8,12 +8,6 @@
  *
 */
 
-typedef struct _pixelRGB {
-  /*
-   * TO COMPLETE
-   */
-   char R ; 
-} pixelRGB ;
 
 
 #endif
