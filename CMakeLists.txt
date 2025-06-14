@@ -27,7 +27,7 @@ find_library(GETOPT_LIB
     HINTS "${GETOPT_PATH}/lib"
 )
 # Link it
-target_link_libraries( freud PUBLIC ${ESTIA_IMAGE_LIB})
+target_link_libraries(freud PUBLIC "${ESTIA_IMAGE_PATH}/lib/libestia-image.a")
 target_link_libraries( freud PUBLIC ${GETOPT_LIB})
 
 install(TARGETS freud
