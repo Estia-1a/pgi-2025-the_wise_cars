@@ -39,3 +39,7 @@ void tenth_pixel(char *source_path){
     read_image_data(source_path, &data, &width, &height, &channels);
     printf("RGB du 10eme pixel : %d,%d,%d \n",data[27],data[28],data[29]);
 }
+
+
+
+
