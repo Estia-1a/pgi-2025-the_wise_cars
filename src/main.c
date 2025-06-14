@@ -41,6 +41,10 @@ int main(int argc, char **argv) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     first_pixel(configuration.filenames[0]);
   }
+  if ( strncmp( configuration.command, "tenth_pixel", 13 ) == 0 ) {
+    /* helloworld() function is defined in feature.h and implemented in feature.c */
+    tenth_pixel(configuration.filenames[0]);
+  }
   /*
    * TO COMPLETE
    */
