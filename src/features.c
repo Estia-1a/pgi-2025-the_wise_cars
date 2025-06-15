@@ -73,3 +73,8 @@ void color_red(char *source_path){
   write_image_data("image_out.bmp",data,width,height);
   free_image_data(data);
 }
+
+
+
+
+//Pour les autres fonctions "color, il suffit juste de jouer avec les data[i],data[i+1],data[i+2] pour changer les nuances de couleurs
