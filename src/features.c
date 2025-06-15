@@ -61,3 +61,13 @@ void print_pixel(char *source_path, int x, int y){
   free_image_data(data);
 }
 
+void color_red(char *source_path){
+  int width,height,channels;
+  unsigned char *data;
+  write_image_data(source_path,&data,&width,&height);
+  int i=0;
+  for(i=0;i<width*height*channels;i+=channels){
+    data[i+1]=0; // met les nuances de bleus et vert à 0 pour ne retenir que les nuances de rouges
+    data[i+2]=0;
+  }
+}

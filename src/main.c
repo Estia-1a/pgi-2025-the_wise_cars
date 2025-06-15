@@ -53,6 +53,10 @@ int main(int argc, char **argv) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     print_pixel(configuration.filenames[0],atoi(configuration.arguments[1]),atoi(configuration.arguments[2]));
   }
+  if ( strncmp( configuration.command, "color_red", 16 ) == 0 ) {
+    /* helloworld() function is defined in feature.h and implemented in feature.c */
+    color_red(configuration.filenames[0]);
+  }
   /*
    * TO COMPLETE
    */
