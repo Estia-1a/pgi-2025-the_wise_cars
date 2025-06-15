@@ -37,9 +37,17 @@ void tenth_pixel(char *source_path){
     int width, height, channels;
     unsigned char *data;
     read_image_data(source_path, &data, &width, &height, &channels);
-    printf("RGB du 10ème pixel : %d,%d,%d \n",data[27],data[28],data[29]);
+    printf("RGB du 10eme pixel : %d,%d,%d \n",data[27],data[28],data[29]);
 }
 
+void second_line(char *source_path){
+  int width, height, channels;
+  unsigned char *data;
+
+  read_image_data(source_path, &data, &width, &height, &channels);
+  int ligne = 3*width+3;
+  printf("1er pixel RGB de la deuxieme ligne : %d,%d,%d \n",data[ligne],data[ligne+1],data[ligne+2]);
+}
 
 
 
