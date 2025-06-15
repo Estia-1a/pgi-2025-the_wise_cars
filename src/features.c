@@ -70,6 +70,6 @@ void color_red(char *source_path){
     data[i+1]=0; // met les nuances de bleus et vert à 0 pour ne retenir que les nuances de rouges
     data[i+2]=0;
   }
-  write_image_data("image_out.bmp",&data,&width,&height);
+  write_image_data("image_out.bmp",data,width,height);
   free_image_data(data);
 }
