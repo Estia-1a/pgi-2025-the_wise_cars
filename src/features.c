@@ -70,4 +70,5 @@ void color_red(char *source_path){
     data[i+1]=0; // met les nuances de bleus et vert à 0 pour ne retenir que les nuances de rouges
     data[i+2]=0;
   }
+  free_image_data(data);
 }
