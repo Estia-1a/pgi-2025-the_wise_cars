@@ -20,24 +20,26 @@ void helloWorld(){
 }
 void dimension (char *source_path){
     int width, height, channels;
-
     unsigned char *data; 
     read_image_data(source_path, &data, &width, &height, &channels);
-    printf("dimensions de l'image : %d, %d \n", width, height);
+    printf("dimension : %d, %d \n", width, height);
+    free_image_data(data);
 }
 
 void first_pixel(char *source_path){
     int width, height, channels;
     unsigned char *data;
     read_image_data(source_path, &data, &width, &height, &channels);
-    printf("RGB du premier pixel : %d,%d,%d \n",data[0],data[1],data[2]);
+    printf("first_pixel : %d,%d,%d \n",data[0],data[1],data[2]);
+    free_image_data(data);
 }
 
 void tenth_pixel(char *source_path){
     int width, height, channels;
     unsigned char *data;
     read_image_data(source_path, &data, &width, &height, &channels);
-    printf("RGB du 10eme pixel : %d,%d,%d \n",data[27],data[28],data[29]);
+    printf("tenth_pixel : %d,%d,%d \n",data[27],data[28],data[29]);
+    free_image_data(data);
 }
 
 void second_line(char *source_path){
@@ -46,8 +48,16 @@ void second_line(char *source_path){
 
   read_image_data(source_path, &data, &width, &height, &channels);
   int ligne = 3*width+3;
-  printf("1er pixel RGB de la deuxieme ligne : %d,%d,%d \n",data[ligne],data[ligne+1],data[ligne+2]);
+  printf("second_line : %d,%d,%d \n",data[ligne],data[ligne+1],data[ligne+2]);
+  free_image_data(data);
 }
 
-
+void print_pixel(char *source_path, int x, int y){
+  int width, height, channels;
+  unsigned char *data;
+  read_image_data(source_path, &data, &width, &height, &channels);
+  pixelRGB *pixel=get_pixel(data, width, height, channels, x, y);
+  printf("print_pixel (x,y) : (%d, %d): %d, %d, %d\n", x, y, pixel->R, pixel->G, pixel->B);
+  free_image_data(data);
+}
 
