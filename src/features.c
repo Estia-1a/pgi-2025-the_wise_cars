@@ -74,7 +74,82 @@ void color_red(char *source_path){
   free_image_data(data);
 }
 
-
-
-
 //Pour les autres fonctions "color, il suffit juste de jouer avec les data[i],data[i+1],data[i+2] pour changer les nuances de couleurs
+/*
+void max_pixel (char *filename){
+  unsigned char *data = NULL;
+  int width;
+  int height;
+  int channels;
+  if (read_image_data(filename, &data, &width, &height, &channels) == 0){
+    
+    printf("erreur");
+  }
+  else {
+    read_image_data(filename, &data, &width, &height, &channels);
+    int max_R = -1;
+    int max_G = -1;
+    int max_B = -1;
+    int max_X;
+    int max_Y;
+    
+    for (int y = 0; y < height; y++){
+      for (int x = 0; x < width; x++){
+
+        pixelRGB *pixel = get_pixel(data, width, height, channels, x, y);
+        
+        if ((pixel->R + pixel->G + pixel->B) > (max_R + max_G + max_B)) {
+          max_R = pixel->R;
+          max_G = pixel->G;
+          max_B = pixel->B;
+          
+          max_X = x;
+          max_Y = y;
+
+        } 
+      }
+    }
+    printf("max_pixel : (%d, %d): %d, %d, %d\n", max_X, max_Y, max_R, max_G, max_B);
+
+    free_image_data(data);
+  }
+
+}
+*/
+
+/*
+void min_pixel (char *filename){;
+  unsigned char *data = NULL;
+  int width;
+  int height;
+  int channels;
+  if (read_image_data(filename, &data, &width, &height, &channels) == 0){
+    printf("erreur");
+  }
+  else {
+    read_image_data(filename, &data, &width, &height, &channels);
+    int min_R = 256;
+    int min_G = 256;
+    int min_B = 256;
+    int min_X;
+    int min_Y;
+
+    for (int y = 0; y < height; y++){
+      for (int x = 0; x < width; x++){
+        pixelRGB *pixel = get_pixel(data, width, height, channels, x, y);
+
+        if ((pixel->R + pixel->G + pixel->B) < (min_R + min_G + min_B)){
+          min_R = pixel->R;
+          min_G = pixel->G;
+          min_B = pixel->B;
+
+          min_X = x;
+          min_Y = y;
+        }
+      }
+    }
+    printf("min_pixel : (%d, %d): %d, %d, %d\n", min_X, min_Y, min_R, min_B, min_G);
+    free_image_data(data);
+  }
+}
+*/
