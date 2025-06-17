@@ -77,36 +77,29 @@ void color_red(char *source_path){
 //Pour les autres fonctions "color, il suffit juste de jouer avec les data[i],data[i+1],data[i+2] pour changer les nuances de couleurs
 /*
 void max_pixel (char *filename){
-  unsigned char *data = NULL;
-  int width;
-  int height;
-  int channels;
-  if (read_image_data(filename, &data, &width, &height, &channels) == 0){
+  unsigned char *data;
+  int width,height,channels;
+  read_image_data(filename, &data, &width, &height, &channels);
+  int max_R = -1;
+  int max_G = -1;
+  int max_B = -1;
+  int max_X;
+  int max_Y;
     
-    printf("erreur");
-  }
-  else {
-    read_image_data(filename, &data, &width, &height, &channels);
-    int max_R = -1;
-    int max_G = -1;
-    int max_B = -1;
-    int max_X;
-    int max_Y;
-    
-    for (int y = 0; y < height; y++){
-      for (int x = 0; x < width; x++){
+  for (int y = 0; y < height; y++){
+    for (int x = 0; x < width; x++){
 
-        pixelRGB *pixel = get_pixel(data, width, height, channels, x, y);
+      pixelRGB *pixel = get_pixel(data, width, height, channels, x, y);
         
-        if ((pixel->R + pixel->G + pixel->B) > (max_R + max_G + max_B)) {
-          max_R = pixel->R;
-          max_G = pixel->G;
-          max_B = pixel->B;
+      if ((pixel->R + pixel->G + pixel->B) > (max_R + max_G + max_B)) {
+        max_R = pixel->R;
+        max_G = pixel->G;
+        max_B = pixel->B;
           
-          max_X = x;
-          max_Y = y;
+        max_X = x;
+        max_Y = y;
 
-        } 
+      } 
       }
     }
     printf("max_pixel : (%d, %d): %d, %d, %d\n", max_X, max_Y, max_R, max_G, max_B);
