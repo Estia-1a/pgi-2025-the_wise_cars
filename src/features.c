@@ -73,7 +73,30 @@ void color_red(char *source_path){
   write_image_data("image_out.bmp",data,width,height);
   free_image_data(data);
 }
-
+void color_green(char *source_path){
+  int width,height,channels;
+  unsigned char *data;
+  read_image_data(source_path,&data,&width,&height,&channels);
+  int i=0;
+  for(i=0;i<width*height*channels;i+=channels){
+    data[i]=0; // met les nuances de bleus et vert à 0 pour ne retenir que les nuances de rouges
+    data[i+2]=0;
+  }
+  write_image_data("image_out.bmp",data,width,height);
+  free_image_data(data);
+}
+void color_blue(char *source_path){
+  int width,height,channels;
+  unsigned char *data;
+  read_image_data(source_path,&data,&width,&height,&channels);
+  int i=0;
+  for(i=0;i<width*height*channels;i+=channels){
+    data[i]=0; // met les nuances de bleus et vert à 0 pour ne retenir que les nuances de rouges
+    data[i+1]=0;
+  }
+  write_image_data("image_out.bmp",data,width,height);
+  free_image_data(data);
+}
 //Pour les autres fonctions "color, il suffit juste de jouer avec les data[i],data[i+1],data[i+2] pour changer les nuances de couleurs
 /*
 void max_pixel (char *filename){

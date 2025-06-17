@@ -57,6 +57,14 @@ int main(int argc, char **argv) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     color_red(configuration.filenames[0]);
   }
+   if ( strncmp( configuration.command, "color_green", 17 ) == 0 ) {
+    /* helloworld() function is defined in feature.h and implemented in feature.c */
+    color_green(configuration.filenames[0]);
+  }
+   if ( strncmp( configuration.command, "color_blue", 18 ) == 0 ) {
+    /* helloworld() function is defined in feature.h and implemented in feature.c */
+    color_blue(configuration.filenames[0]);
+  }
   /*
    * TO COMPLETE
    */
