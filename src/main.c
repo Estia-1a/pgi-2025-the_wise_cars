@@ -65,6 +65,10 @@ int main(int argc, char **argv) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     color_blue(configuration.filenames[0]);
   }
+    if ( strncmp( configuration.command, "color_invert", 18 ) == 0 ) {
+    /* helloworld() function is defined in feature.h and implemented in feature.c */
+    color_invert(configuration.filenames[0]);
+  }
   /*
    * TO COMPLETE
    */
