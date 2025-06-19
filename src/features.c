@@ -113,7 +113,7 @@ void color_invert(char *source_path){
 }
 //Pour les autres fonctions "color, il suffit juste de jouer avec les data[i],data[i+1],data[i+2] pour changer les nuances de couleurs
 
-/*void max_pixel (char *filename){
+void max_pixel (char *filename){
   unsigned char *data;
   int width,height,channels;
   read_image_data(filename, &data, &width, &height, &channels);
@@ -207,12 +207,12 @@ void max_component (char * filename, char component){
 
 void min_component (char * filename, char component){
 
-}*/
+}
 
 
 /* Partie Loris */
 
-/*void color_gray(char *filename)
+void color_gray(char *filename)
 {
     int width, height, channels;
     unsigned char *data = NULL;
@@ -316,4 +316,4 @@ void rotate_acw(char *filename){
         free_image_data(rotate_a90);
     }
     
-}*/
+}
