@@ -280,3 +280,36 @@ void rotate_acw(char *filename){
     }
     
 }
+void max_component (char *source_path, char component) {
+  unsigned char *data;
+  int width = 0, height = 0, channels = 0; 
+  int max_X = -1, max_Y = -1, max = -1, max_R = -1, max_G = -1, max_B = -1, max_value = -1; 
+  
+  for (int y = 0; y < height; y++){
+    for (int x = 0; x < width; x++){
+      pixelRGB *pixel = get_pixel(data, width, height, channels, x, y);
+      int value =0;
+
+      if (component == 'R'){
+        value = pixel ->R;
+      }
+      else if (component == 'G'){
+        value = pixel ->G;
+      }
+      else if (component == 'B'){
+        value = pixel ->B;
+
+      }
+      if (value > max_value) {
+        max_value = value;
+        max_X = x;
+        max_Y = y;
+
+      }
+
+    }
+
+  }
+  printf("max_component %c (%d,%d): %d\n", component, max_X, max_Y, max_value);
+  free_image_data(data);
+}

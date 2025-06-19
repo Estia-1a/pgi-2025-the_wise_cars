@@ -19,4 +19,6 @@ void rotate_cw(char *filename);
 void rotate_acw(char *filename);
 void max_pixel(char *filename);
 void min_pixel(char *filename);
+void max_component (char *source_path, char component);
+
 #endif

@@ -97,6 +97,11 @@ int main(int argc, char **argv) {
 
       min_pixel(configuration.filenames[0]);
   }
+  
+  if (strncmp (configuration.command, "max_component",25) ==0){
+    char component = configuration.arguments[0][0];
+    max_component(configuration.filenames[0], component);
+  }
 
   /*
    * TO COMPLETE
