@@ -282,38 +282,86 @@ void rotate_acw(char *filename){
 }
 void max_component (char *source_path, char component) {
   unsigned char *data;
-  int width = 0, height = 0, channels = 0; 
-  int max_X = -1, max_Y = -1, max = -1, max_R = -1, max_G = -1, max_B = -1, max_value = -1; 
-  
-  for (int y = 0; y < height; y++){
-    for (int x = 0; x < width; x++){
-      pixelRGB *pixel = get_pixel(data, width, height, channels, x, y);
-      int value =0;
+  int width, height, channels;
+  read_image_data(source_path, &data, &width, &height, &channels);     
+  int component_num;
+    int y;
+    int x;
 
-      if (component == 'R'){
-        value = pixel ->R;
-      }
-      else if (component == 'G'){
-        value = pixel ->G;
-      }
-      else if (component == 'B'){
-        value = pixel ->B;
+    int max_valeur = -1;
+    int max_x = 0;
+    int max_y = 0;
 
-      }
-      if (value > max_value) {
-        max_value = value;
-        max_X = x;
-        max_Y = y;
+    if (component == 'R') {
+      component_num = 0;
+    } 
+    else if (component == 'G') {
+      component_num = 1;
+    } 
+    else if (component == 'B') {
+      component_num = 2;
+    } 
 
-      }
+    for (y = 0; y < height; y++){
+      for (x = 0; x < width; x++){
+        int indice;
+        indice = (y*width + x) * channels+ component_num;
+        int valeur;
+        valeur = data[indice];
 
+        if (indice > max_valeur){
+          max_valeur = valeur;
+          max_x = x;
+          max_y = y;
+        }
+      }
     }
-
-  }
-  printf("max_component %c (%d,%d): %d\n", component, max_X, max_Y, max_value);
+    
+  printf("max_component %c (%d, %d): %d\n", component, max_x, max_y, max_valeur);
   free_image_data(data);
 }
 
+
+void min_component (char *source_path, char component) {
+  unsigned char *data;
+  int width, height, channels;
+  read_image_data(source_path, &data, &width, &height, &channels);     
+  int component_num;
+    int y;
+    int x;
+
+    int min_valeur = 256;
+    int min_x = 0;
+    int min_y = 0;
+
+    if (component == 'R') {
+      component_num = 0;
+    } 
+    else if (component == 'G') {
+      component_num = 1;
+    } 
+    else if (component == 'B') {
+      component_num = 2;
+    } 
+
+    for (y = 0; y < height; y++){
+      for (x = 0; x < width; x++){
+        int indice;
+        indice = (y*width + x) * channels+ component_num;
+        int valeur;
+        valeur = data[indice];
+
+        if (indice < min_valeur){
+          min_valeur = valeur;
+          min_x = x;
+          min_y = y;
+        }
+      }
+    }
+    
+  printf("min_component %c (%d, %d): %d\n", component, min_x, min_y, min_valeur);
+  free_image_data(data);
+}
 void color_desaturate(char *source_path){
   int width,height,channels;
   unsigned char *data;
