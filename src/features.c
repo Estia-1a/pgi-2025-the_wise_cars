@@ -113,7 +113,7 @@ void color_invert(char *source_path){
 }
 
 //Pour les autres fonctions "color, il suffit juste de jouer avec les data[i],data[i+1],data[i+2] pour changer les nuances de couleurs
-/*
+
 void max_pixel (char *filename){
   unsigned char *data;
   int width,height,channels;
@@ -145,45 +145,36 @@ void max_pixel (char *filename){
     free_image_data(data);
   }
 
-}
-*/
 
-/*
 void min_pixel (char *filename){;
-  unsigned char *data = NULL;
-  int width;
-  int height;
-  int channels;
-  if (read_image_data(filename, &data, &width, &height, &channels) == 0){
-    printf("erreur");
-  }
-  else {
-    read_image_data(filename, &data, &width, &height, &channels);
-    int min_R = 256;
-    int min_G = 256;
-    int min_B = 256;
-    int min_X;
-    int min_Y;
+  unsigned char *data;
+  int width,height,channels;
+  read_image_data(filename, &data, &width, &height, &channels);
+  int min_R = 256;
+  int min_G = 256;
+  int min_B = 256;
+  int min_X;
+  int min_Y;
 
-    for (int y = 0; y < height; y++){
-      for (int x = 0; x < width; x++){
-        pixelRGB *pixel = get_pixel(data, width, height, channels, x, y);
+  for (int y = 0; y < height; y++){
+    for (int x = 0; x < width; x++){
+      pixelRGB *pixel = get_pixel(data, width, height, channels, x, y);
 
-        if ((pixel->R + pixel->G + pixel->B) < (min_R + min_G + min_B)){
-          min_R = pixel->R;
-          min_G = pixel->G;
-          min_B = pixel->B;
+      if ((pixel->R + pixel->G + pixel->B) < (min_R + min_G + min_B)){
+        min_R = pixel->R;
+        min_G = pixel->G;
+        min_B = pixel->B;
 
-          min_X = x;
-          min_Y = y;
-        }
+        min_X = x;
+        min_Y = y;
       }
     }
-    printf("min_pixel : (%d, %d): %d, %d, %d\n", min_X, min_Y, min_R, min_B, min_G);
-    free_image_data(data);
   }
+  printf("min_pixel : (%d, %d): %d, %d, %d\n", min_X, min_Y, min_R, min_B, min_G);
+  free_image_data(data);
 }
-*/
+
+
 void color_gray(char *filename)
 {
     int width, height, channels;
