@@ -111,19 +111,7 @@ void color_invert(char *source_path){
   write_image_data("image_out.bmp",data,width,height);
   free_image_data(data);
 }
-void color_gray_luminance(char *source_path){
-  int width,height,channels;
-  unsigned char *data;
-  read_image_data(source_path,&data,&width,&height,&channels);
-  int i=0;
-  for(i=0;i<width*height*channels;i+=channels){
-    data[i]=0.21*data[i];
-    data[i+1]=0.72*data[i+1];
-    data[i+2]=0.07*data[i+2];
-  }
-  write_image_data("image_out.bmp",data,width,height);
-  free_image_data(data);
-}
+
 //Pour les autres fonctions "color, il suffit juste de jouer avec les data[i],data[i+1],data[i+2] pour changer les nuances de couleurs
 /*
 void max_pixel (char *filename){
@@ -196,3 +184,108 @@ void min_pixel (char *filename){;
   }
 }
 */
+void color_gray(char *filename)
+{
+    int width, height, channels;
+    unsigned char *data = NULL;
+
+    read_image_data(filename, &data, &width, &height, &channels);
+
+    for (int i = 0; i < width * height * channels; i += channels)
+    {
+        unsigned char value = (data[i] + data[i + 1] + data[i + 2]) / 3;
+        data[i] = value;
+        data[i + 1] = value;
+        data[i + 2] = value;
+    }
+
+    if (write_image_data("image_out.bmp", data, width, height) != 0)
+    {
+        free_image_data(data);
+    }
+}
+
+void color_gray_luminance(char *filename)
+{
+    int width, height, channels;
+    unsigned char *data = NULL;
+
+    read_image_data(filename, &data, &width, &height, &channels);
+
+    for (int i = 0; i < width * height * channels; i += channels)
+    {
+
+        unsigned char R = data[i];
+        unsigned char G = data[i + 1];
+        unsigned char B = data[i + 2];
+
+        unsigned char value = (0.21 * R + 0.72 * G + 0.07 * B);
+
+        data[i] = value;
+        data[i + 1] = value;
+        data[i + 2] = value;
+    }
+
+    if (write_image_data("image_out.bmp", data, width, height) != 0)
+    {
+        free_image_data(data);
+    }
+}
+
+void rotate_cw(char *filename){
+    int width, height, channels;
+    unsigned char *data = NULL;
+
+    read_image_data (filename, &data, &width, &height,  &channels);
+
+    int new_width = height;
+    int new_height = width;
+
+    unsigned char *rotate_90 = (unsigned char *)malloc(new_width * new_height * channels);
+
+    for (int j = 0; j < height; j++) {
+        for (int i = 0; i < width; i++) {
+
+            int src_idx = (j * width + i) * channels;
+            int dst_idx = (i * new_width + (new_width - 1 - j)) * channels;
+
+            for (int c = 0; c < channels; c++) {
+                rotate_90[dst_idx + c] = data[src_idx + c];
+            }
+        }
+    }
+
+    if (write_image_data("image_out.bmp", rotate_90, new_width, new_height) != 0) {
+        free_image_data(rotate_90);
+    }
+    
+}
+
+void rotate_acw(char *filename){
+    int width, height, channels;
+    unsigned char *data = NULL;
+
+    read_image_data (filename, &data, &width, &height,  &channels);
+
+    int new_width = height;
+    int new_height = width;
+
+    unsigned char *rotate_a90 = (unsigned char *)malloc(new_width * new_height * channels);
+
+    for (int j = 0; j < height; j++) {
+        for (int i = 0; i < width; i++) {
+
+            int src_idx = (j * width + i) * channels;
+            int dst_idx = ((width - 1 - i) * new_width + j) * channels;
+
+            for (int c = 0; c < channels; c++) {
+                rotate_a90[dst_idx + c] = data[src_idx + c];
+            }
+        }
+    }
+
+    if (write_image_data("image_out.bmp", rotate_a90, new_width, new_height) != 0) {
+        free_image_data(rotate_a90);
+    }
+    
+}
