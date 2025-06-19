@@ -313,3 +313,39 @@ void max_component (char *source_path, char component) {
   printf("max_component %c (%d,%d): %d\n", component, max_X, max_Y, max_value);
   free_image_data(data);
 }
+
+void color_desaturate(char *source_path){
+  int width,height,channels;
+  unsigned char *data;
+  read_image_data(source_path, &data,&width,&height,&channels);
+  int min ;
+  int i=0;
+  for(i=0;i<width*height*channels;i+=channels){
+    if (data[i]<data[i+1] && data[i]<data[i+2]){
+      min=data[i];
+    } else if(data[i+1]<data[i] && data[i+1]<data[i+2]){
+      min=data[i+1];
+    }else{
+      min=data[i+2];
+    }
+  }
+  int max;
+  int j=0;
+    for(j=0;j<width*height*channels;j+=channels){
+    if (data[j]>data[j+1] && data[j]>data[j+2]){
+      max=data[j];
+    } else if(data[j+1]>data[j] && data[j+1]>data[j+2]){
+      max=data[j+1];
+    }else{
+      max=data[j+2];
+    }
+  }
+  int new_val=(max+min)/2;
+  for(i=0;i<width*height*channels;i+=channels){
+    data[i]=new_val;
+    data[i+1]=new_val;
+    data[i+2]=new_val;
+  }
+  write_image_data("image_out.bmp",data,width,height);
+  free_image_data(data);
+}
